@@ -19,7 +19,14 @@
 }
 @keyframes rotor2 {
     0%{}
-    100%{transform:rotateX(360deg);}
+    50%{transform:translateX(20%)}
+    100%{
+        transform:translateX(-20%);}
+}
+@keyframes rotor3 {
+    0%{}
+    100%{
+        transform:rotateX(360deg);}
 }
 @keyframes coloring {
 	0% {background-position: 0% 50%;
@@ -28,4 +35,9 @@
         color:rgb(18, 39, 67);}
 	100% {background-position: 0% 50%;
         color:white;}
+}
+@keyframes growRight{
+    0%{width:0%;
+    margin-right:20%;}
+    100%{width:20%;}
 }

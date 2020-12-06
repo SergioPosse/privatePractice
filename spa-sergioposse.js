@@ -24,15 +24,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
     let specialitiesButton = document.getElementById("especialidades");
     let specialities = document.getElementById("specialities");
-    scrollToElement(specialitiesButton,specialities,0);
+    scrollToElement(specialitiesButton,specialities,150);
 
     let initButton = document.getElementById("nosotros");
     let init = document.getElementById("init");
-    scrollToElement(initButton,init,0);
+    scrollToElement(initButton,init,100);
 
     let contactButton = document.getElementById("contacto");
     let contact = document.getElementById("contact");
-    scrollToElement(contactButton,contact,0);
+    scrollToElement(contactButton,contact,100);
 
     let benefitsButton = document.getElementById("beneficios");
     let benefits = document.getElementById("benefits");
@@ -42,40 +42,60 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
    window.addEventListener('scroll',  () => {
-       let offsetTop = window.offsetTop;
 
-        document.documentElement.style.setProperty('--offsetTop',`${offsetTop}px`);
 
         let heightContainer = document.getElementById('section-container').offsetHeight;
         let scrollVal = window.pageYOffset / (heightContainer - window.innerHeight);
         console.log(scrollVal);
         document.body.style.setProperty('--scroll',scrollVal);
 
-        const watchScroll = async (elemento,claseString)=>{
+        //elemento = al elemento que se le agrega la clase en scroll
+        //claseString = la clase que se agrega
+        //alAux = se define solo si necesito que la clase se agrege a un elemento pero se active con otro al scrollear
+        //por ejemplo con un div que adentro tiene un h2, el auxiliar es el div ya que el h2 es muy chico su height para activar de forma smooth
+        const watchScroll = async (elemento,claseString,elAux)=>{
             //the calcs was test and error thing trying and trying, no maths knowledge here
             // let posTop = parseInt(((window.scrollY + (elemento.clientHeight)*1.35 )/10));
             //responsive will take care of when the animation starts, in mobile start soon
+            let elemTrigger
+
+            if (elAux) {
+                elemTrigger=elAux;
+            }
+            else{
+                elemTrigger=elemento
+            }
+
             let reso = window.innerWidth;
             let coeficient = 500;
             if(reso>640){
                 coeficient = 300;
             }
         
-            let limitTop = elemento.getBoundingClientRect().top + window.scrollY; //less limit means that the add class happens more early cause the top limit is set to high
+            let limitTop = elemTrigger.getBoundingClientRect().top + window.scrollY; //less limit means that the add class happens more early cause the top limit is set to high
+            let elementHeight = elemTrigger.getBoundingClientRect().height;
+
+            // console.log(limitTop);
+            // console.log("elH: "+elementHeight);
+            // console.log("scrollY+coef: "+scrollY+coeficient+" >  limitTop: "+limitTop);
             
-            if(scrollY+coeficient>limitTop ){ //
-                   elemento.classList.add(claseString);
+            if((scrollY+coeficient>limitTop)&&(scrollY+coeficient<limitTop+elementHeight) ){ //
+                elemento.classList.add(claseString);
             }
             else{
                 elemento.classList.remove(claseString);
             }
+            
         }
 
         watchScroll(document.getElementById('nutricion'),'animation-fading');
         watchScroll(document.getElementById('psicologia'),'animation-fading');
         watchScroll(document.getElementById('alternativa'),'animation-fading');
         watchScroll(document.getElementById('odontologia'),'animation-fading');
-        watchScroll(document.getElementById('benefitsSpin'),'animation-spin');
+
+        //uso del elemento auxiliar para disparar la animacion con el scroll
+        watchScroll(document.getElementById('benefitsSpin'),'animation-spin',document.getElementById('benefits'));
+        watchScroll(document.getElementById('line-benefits'),'animation-grow-right',document.getElementById('benefits'));
 
         //progress bar
         var winScroll = document.body.scrollTop || document.documentElement.scrollTop;

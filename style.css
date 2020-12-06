@@ -139,7 +139,7 @@
         width:40%;
         height:40%;
         position:absolute;
-        animation: fade 2s linear forwards;
+        animation: fade 1s linear forwards;
         animation-play-state: paused;
         object-fit: contain;
         animation-delay: calc(var(--scroll) * -30s);
@@ -204,24 +204,29 @@
         object-fit: contain;
         padding-bottom:0vh;
     }
-/* BENEFITS*/
+/* -----------------BENEFITS--------------------*/
     #benefits{
         background-color:#de97f0;
         height: calc(var(--vh, 1vh) * 70);
         display:flex;
-        justify-items:center;
-        justify-content: space-evenly;
-        align-content:center;
-        align-items:center; 
-    }
+        flex-direction:column;
+        justify-content: center;
+        align-items:center;
+        position:relative;
+    }   
     .benefits-content{
         background-color:#4b3a50;
         height: calc(var(--vh, 1vh) * 270);
         display:flex;
-        justify-items:center;
-        justify-content: space-evenly;
-        align-content:center;
-        align-items:center; 
+    }
+    #benefitsSpin{
+      
+    }
+    #line-benefits{
+
+        width:0%;
+        background-color:white;
+        height:1%;
     }
 /* ----------- CONTACTO --------------*/
     #contact{
@@ -260,10 +265,14 @@
         padding: 0 !important;
         margin: 0 !important;
     }
-/* class will be added with js */
+/* -------------class will be added with js-------------- */
     .animation-spin{
-        animation: rotor2 1s linear infinite;
+        animation: rotor2 1s linear, rotor3 1s;
+        animation-delay: 0s, 1000ms;
     }
     .animation-fading{
         animation: fade 1s linear forwards;
+    }
+    .animation-grow-right{
+        animation: growRight 1s linear forwards;
     }
