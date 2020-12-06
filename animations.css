@@ -1,0 +1,31 @@
+@keyframes fade {
+    0%{opacity:0%;}
+    100%{opacity:100%;}
+}
+@keyframes rotor{
+    0%{}
+    100%{transform:rotateZ(360deg);}
+}
+@keyframes carro {
+    0%{background-image:url("img/work.jpg");}
+    25%{background-image:url("img/work2.jpg");}
+    50%{background-image:url("img/work3.jpg");}
+    75%{background-image:url("img/work4.jpg");}
+    100%{background-image:url("img/work5.jpg");}
+}
+@keyframes slideRight {
+    0%{transform: translateX(0%);}
+    100%{transform: translateX(100%);}
+}
+@keyframes rotor2 {
+    0%{}
+    100%{transform:rotateX(360deg);}
+}
+@keyframes coloring {
+	0% {background-position: 0% 50%;
+        color:white;}
+	50% {background-position: 100% 50%;
+        color:rgb(18, 39, 67);}
+	100% {background-position: 0% 50%;
+        color:white;}
+}

@@ -2,7 +2,8 @@ document.addEventListener('DOMContentLoaded', function () {
     let vh = window.innerHeight * 0.01;
     let vw = window.innerWidth * 0.01;
     document.documentElement.style.setProperty('--vh', `${vh}px`);
-    document.documentElement.style.setProperty('--vw',`${vh}px`);
+    document.documentElement.style.setProperty('--vw',`${vw}px`);
+    document.documentElement.style.setProperty('--offsetTop',`${vh}px`);
     //height: calc(var(--vh, 1vh) * 100)
     //USE THIS WAY for real viewport in mobile navigators
     //the comma in var(--vh, 1vh) is a fallback
@@ -10,45 +11,50 @@ document.addEventListener('DOMContentLoaded', function () {
     // *100 = 100%, *50 = 50%, etc.
 
 
-    const scrollToElement = (elementFrom,elementTo)=>{
+        //pound must be 0 for no affect, otherwise need to try
+    const scrollToElement = (elementFrom,elementTo,pound)=>{
         elementFrom.addEventListener("click",()=>{
+            let distance = parseInt(elementTo.offsetTop)-parseInt(pound);
             scroll({
                 behavior: "smooth",   //smotth BETTER solution for scroll but not supported by some browsers in 2020
-                top: elementTo.offsetTop
+                top: distance
             }) 
         });
     }
 
-    let especialidades = document.getElementById("especialidades");
-    let three = document.getElementById("three");
-    scrollToElement(especialidades,three);
+    let specialitiesButton = document.getElementById("especialidades");
+    let specialities = document.getElementById("specialities");
+    scrollToElement(specialitiesButton,specialities,0);
 
-    let nosotros = document.getElementById("nosotros");
-    let one = document.getElementById("one");
-    scrollToElement(nosotros,one);
+    let initButton = document.getElementById("nosotros");
+    let init = document.getElementById("init");
+    scrollToElement(initButton,init,0);
 
-    let contacto = document.getElementById("contacto");
-    let footer = document.getElementById("footer");
-    scrollToElement(contacto,footer);
+    let contactButton = document.getElementById("contacto");
+    let contact = document.getElementById("contact");
+    scrollToElement(contactButton,contact,0);
+
+    let benefitsButton = document.getElementById("beneficios");
+    let benefits = document.getElementById("benefits");
+    scrollToElement(benefitsButton,benefits,100);
 
 
 
 
    window.addEventListener('scroll',  () => {
+       let offsetTop = window.offsetTop;
+
+        document.documentElement.style.setProperty('--offsetTop',`${offsetTop}px`);
 
         let heightContainer = document.getElementById('section-container').offsetHeight;
         let scrollVal = window.pageYOffset / (heightContainer - window.innerHeight);
         console.log(scrollVal);
         document.body.style.setProperty('--scroll',scrollVal);
 
-        // let el2 = document.getElementById("marker");
-        // elemento2 = el2.offsetTop;
-
         const watchScroll = async (elemento,claseString)=>{
             //the calcs was test and error thing trying and trying, no maths knowledge here
             // let posTop = parseInt(((window.scrollY + (elemento.clientHeight)*1.35 )/10));
-            // console.log(elemento.getBoundingClientRect().top+window.scrollY);
-            // console.log(scrollY);
+            //responsive will take care of when the animation starts, in mobile start soon
             let reso = window.innerWidth;
             let coeficient = 500;
             if(reso>640){
@@ -71,6 +77,7 @@ document.addEventListener('DOMContentLoaded', function () {
         watchScroll(document.getElementById('odontologia'),'animation-fading');
         watchScroll(document.getElementById('benefitsSpin'),'animation-spin');
 
+        //progress bar
         var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
         var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
         var scrolled = (winScroll / height) * 100;
@@ -78,8 +85,6 @@ document.addEventListener('DOMContentLoaded', function () {
         
     }, false);
 
-
-    
 
     //sliderClass is the class name without the dot
     const setSlider = (sliderClass,duration)=>{
