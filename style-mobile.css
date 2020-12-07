@@ -1,4 +1,8 @@
 @media (max-width: 640px) {
+    body{
+        overflow-x: hidden;
+        
+    }
     p{
         font-size:calc(var(--vh, 1vh) * 2);
     }
@@ -71,6 +75,66 @@
     .img-on-top{
         flex-direction: column-reverse;
     }
+/* ---------------benefits ------------- */
+#benefits-content{
+    background-color:#e6e6e6;
+    height: calc(var(--vh, 1vh) * 270);
+    display:flex;
+    position: relative;
+}
+.benefits-items{
+    overflow: hidden;
+    display:flex;
+    color:black;
+    flex-direction: column-reverse;
+    font-size:calc(var(--vw,1vw)*2.9);
+    justify-content:space-around;
+}
+.respo-animation{
+  position: absolute;
+    bottom:0;
+  left:2%;
+  display:block;
+  visibility: hidden;
+}
+#device-animation{
+    width:100%;
+    height:25%;
+}
+#h2-device-animation{
+    animation-duration:3s !important;
+    display:block;
+    visibility: hidden;
+    text-align: center;
+    align-self:center;
+    justify-self: center;
+}
+.h2-container{
+    position:absolute;
+    top:0;
+    left:0;
+}
+.respo-animation:nth-child(1){
+    left:90%;
+    width:40%;
+    animation-delay:0ms !important;
+}
+.respo-animation:nth-child(2){
+    left:100%;
+    width:20%;
+    animation-delay:1200ms !important;
+}
+.respo-animation:nth-child(3){
+    left:95%;
+    width:30%;
+    animation-delay:600ms !important;
+}
+.respo-container{
+    width:100%;
+    position:relative;
+    display:flex;
+    flex-direction: row;
+}
 /* -----CONTACT ---------*/
     .contact-description{
         width:30%;
@@ -83,4 +147,7 @@
     #contact input,textarea{
         width:70% !important;
     }
+}
+.slideDevices2{
+    animation: slideDevices2 1s ease-in-out forwards;
 }

@@ -39,9 +39,11 @@ document.addEventListener('DOMContentLoaded', function () {
     scrollToElement(benefitsButton,benefits,100);
 
 
- 
+
 
    window.addEventListener('scroll',  () => {
+
+
         let heightContainer = document.getElementById('section-container').offsetHeight;
         let scrollVal = window.pageYOffset / (heightContainer - window.innerHeight);
         // console.log(scrollVal);
@@ -49,13 +51,30 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-        const addMultiplesClases = (clase)=>{
-            Object.keys(clases).map((key)=>{
-                clases[key].classList.add(clase);
-                clases[key].style.visibility = "visible";
+        const addClassAfter = (el,clase)=>{
+            return new Promise(res=>{
+                setTimeout(_=>{
+                    el.style.visibility = "visible";
+                    el.classList.add(clase);
+                    res();
+                },600)
             })
         }
-    
+        const iterateClases = (array,clase)=>{
+            let item = array.shift();
+            if(array.length===2){
+                item.style.visibility = "visible";
+                item.classList.add(clase);
+                return iterateClases(array);
+            }
+                if(item){ item.style.visibility = "visible"}; 
+                return item? addClassAfter(item,clase).then(iterateClases.bind(null,array)) : Promise.resolve();  
+        }
+
+        const addMultiplesClases = (clase)=>{
+            iterateClases(Array.from(document.getElementsByClassName('respo-animation')),clase);
+        }
+
         const removeMultiplesClases = (clase)=>{
             let clases = document.getElementsByClassName('respo-animation');
             Object.keys(clases).map((key)=>{
@@ -63,11 +82,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 clases[key].style.visibility = "hidden";
             })
         }
-
-
-
-
-
+        
 
 
         //elemento = al elemento que se le agrega la clase en scroll

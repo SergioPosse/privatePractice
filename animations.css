@@ -41,3 +41,17 @@
     margin-right:20%;}
     100%{width:20%;}
 }
+@keyframes quickShadow{
+    0%{}
+    100%{color:rgb(255, 255, 255);
+        text-shadow: 1px 1px 30px white,1px 1px 30px white,1px 1px 10px white;
+    }
+}
+@keyframes slideDevices{
+    0%{}
+    100%{transform:translateX(-1040%);}
+}
+@keyframes slideDevices2{
+    0%{}
+    100%{transform:translateX(-180%);}
+}
