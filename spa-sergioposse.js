@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             let reso = window.innerWidth;
             let coeficient = 500;
-            if(reso>640){
+            if(reso>450){
                 coeficient = 300;
             }
         
@@ -135,7 +135,7 @@ document.addEventListener('DOMContentLoaded', function () {
         let clases = document.getElementsByClassName('respo-animation');
 
         let reso = window.innerWidth;
-            if(reso>640){
+            if(reso>450){
                 watchScroll(clases,'slideDevices',document.getElementById('device-animation'));
             }
             else{
