@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded', function () {
             // console.log("elH: "+elementHeight);
             // console.log("scrollY+coef: "+scrollY+coeficient+" >  limitTop: "+limitTop);
             
-            if((scrollY+coeficient>limitTop)&&(scrollY+coeficient<limitTop+elementHeight) ){//
+            if((scrollY+coeficient>limitTop)&&(scrollY+coeficient<limitTop+elementHeight+coeficient) ){//
                 if(elemento.length>0){
                     addMultiplesClases(claseString);
                 }else{

@@ -51,7 +51,11 @@
     0%{}
     100%{transform:translateX(-1040%);}
 }
-@keyframes slideDevices2{
+/* @keyframes slideDevices2{
     0%{}
-    100%{transform:translateX(-180%);}
+    100%{left:43%;}
+} */
+@keyframes slideDevices2{
+    0%{transform:scale(0);visibility: hidden;}
+    100%{transform:scale(1);}
 }
