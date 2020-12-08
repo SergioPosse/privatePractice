@@ -107,6 +107,7 @@
 #device-animation{
     width:100%;
     height:25%;
+    background-color: palegreen;
 }
 #h2-device-animation{
     animation-duration:3s !important;

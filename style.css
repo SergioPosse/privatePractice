@@ -230,65 +230,73 @@
         justify-content: center;
         align-items:center;
         position:relative;
-    }   
+    }  
+
     #benefits-content{
-        background-color:#e6e6e6;
         height: calc(var(--vh, 1vh) * 270);
         display:flex;
         position: relative;
+        width:100%;
     }
+
     .benefits-items{
         display:flex;
         color:black;
         flex-direction: row;
         align-items:center;
         font-size:calc(var(--vw,1vw)*1.3);
-        justify-content: space-around;
-    }
-    .respo-container{
-        width:100%;
-        height:auto;
-        flex-wrap:nowrap;
-        margin:0;
-    }
-    .respo-animation{
-      position: absolute;
-      bottom:79%;
-      flex-grow:1;
-      visibility: hidden;
+        
     }
     #device-animation{
         width:100%;
         height:25%;
+    }
+    .respo-container{
+        width:50%;
+        height:100%;
+        margin:0;
+        position: relative;
         display:flex;
+    }
+    .respo-animation{
+      flex-grow:1;
+      visibility: hidden;
+      position: absolute;
+      transform:scale(0);
 
     }
-    #h2-device-animation{
-        animation-duration:3s !important;
-        visibility: hidden;
-        z-index:10000;
-    }
-    .h2-container{
-        position:absolute;
-        top:10%;
-        left:45%;
-    }
     .des{/* pc */
-        left:220%;
-        width:20%;
+        top:10%;
+        left:18%;
+        width:50%;
+        object-fit: contain;
         animation-delay:0ms !important;
 
     }
     .mob{/* celular */
-        left:100%;
-        width:7%;
+        left:16%;
+        bottom:10%;
+        object-fit: contain;
+        width:14%;
         z-index:999;
         animation-delay:1500ms !important;
     }
     .tab{/* tablet */
         animation-delay:700ms !important;
-        left:170%;
-        width:15%;
+        left:41%;
+        width:30%;
+        bottom:10%;
+        object-fit: contain;
+    }
+    #h2-device-animation{
+        animation-duration:3s !important;
+        visibility: hidden;    }
+    .h2-container{        
+        display:flex;
+        width:50%;
+        height:100%;
+        justify-content: center;
+        align-items: center;
     }
     #line-benefits{
         width:0%;

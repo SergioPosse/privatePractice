@@ -47,9 +47,13 @@
         text-shadow: 1px 1px 30px white,1px 1px 30px white,1px 1px 10px white;
     }
 }
-@keyframes slideDevices{
+/* @keyframes slideDevices{
     0%{}
     100%{transform:translateX(-1040%);}
+} */
+@keyframes slideDevices{
+    0%{transform:scale(0);visibility: hidden;}
+    100%{transform:scale(1);}
 }
 /* @keyframes slideDevices2{
     0%{}
