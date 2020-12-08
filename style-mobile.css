@@ -5,6 +5,9 @@
     p{
         font-size:calc(var(--vh, 1vh) * 2);
     }
+    .mobile{
+        display:block;
+    }
 /* -----NAV ---------*/
     #nav{
         flex-wrap:nowrap;
@@ -61,8 +64,13 @@
     }
 /* -----PARALLAX ---------*/
     #parallax-window {
-        min-height: 20vh;
-        max-height: 20vh;
+        min-height: 10vh;
+        max-height: 10vh;
+        background:url(img/one.jpg); /* Nuestra textura */
+        background-repeat:repeat; /* Indicamos que la textura se repetira */
+        background-attachment: fixed;
+        background-size:100% 100%;
+
     }
 /* -----SPECIALITIES ---------*/
     .specialities{

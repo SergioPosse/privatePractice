@@ -14,6 +14,61 @@ document.addEventListener('DOMContentLoaded', function () {
                 link.href = 'style-mobile.css';  
                 // Append link element to HTML head 
                 head.appendChild(link);
+
+                //LOAD IMAGES DEPENDING DEVICE SIZE
+                let rotor = document.getElementById("rotate");
+                rotor.setAttribute("src","img/hearth-circle-small.png");
+                let nutri = document.getElementById("nutricion");
+                nutri.setAttribute("src", "img/AAA nutri.jpg");
+                let odonto = document.getElementById("odontologia");
+                odonto.setAttribute("src", "img/AAA odonto.jpg");
+                let psico = document.getElementById("psicologia");
+                psico.setAttribute("src", "img/AAA psico.jpg");
+                let alter = document.getElementById("alternativa");
+                alter.setAttribute("src", "img/AAA yoga.jpg");
+                let navCarrousel = document.getElementsByClassName('nav-carrousel');
+                let arrCarrousel = ["img/AAA work.jpg","img/AAA work2.jpg","img/AAA work3.jpg","img/AAA work4.jpg","img/AAA work5.jpg"];
+                for(let i=0;i<navCarrousel.length;i++){
+                    navCarrousel[i].setAttribute("src",arrCarrousel[i]);
+                }
+                let mySlides = document.getElementsByClassName('mySlides');
+                let arrSlides = ["img/AAAone.jpg","img/AAA massage.jpg","img/AAA blood-presure.jpg","img/AAA two.jpg"];
+                for(let i=0;i<mySlides.length;i++){
+                    mySlides[i].setAttribute("src",arrSlides[i]);
+                }
+                let respoAnima = document.getElementsByClassName('respo-animation');
+                let arrRespo = ["img/desktop-small.png","img/mobile-small.png","img/tablet-small.png"];
+                for(let i=0;i<respoAnima.length;i++){
+                    respoAnima[i].setAttribute("src",arrRespo[i]);
+                }
+            }
+            else{
+                //LOAD IMAGES DEPENDING DEVICE SIZE
+                let rotor = document.getElementById("rotate");
+                rotor.setAttribute("src","img/hearth-circle.png");
+                let nutri = document.getElementById("nutricion");
+                nutri.setAttribute("src", "img/nutri.jpg");
+                let odonto = document.getElementById("odontologia");
+                odonto.setAttribute("src", "img/odonto.jpg");
+                let psico = document.getElementById("psicologia");
+                psico.setAttribute("src", "img/psico.jpg");
+                let alter = document.getElementById("alternativa");
+                alter.setAttribute("src", "img/yoga.jpg");
+                let navCarrousel = document.getElementsByClassName('nav-carrousel');
+                let arrCarrousel = ["img/work.jpg","img/work2.jpg","img/work3.jpg","img/work4.jpg","img/work5.jpg"];
+                for(let i=0;i<navCarrousel.length;i++){
+                    navCarrousel[i].setAttribute("src",arrCarrousel[i]);
+                }
+                let mySlides = document.getElementsByClassName('mySlides');
+                let arrSlides = ["img/one.jpg","img/massage.jpg","img/blood-presure.jpg","img/two.jpg"];
+                for(let i=0;i<mySlides.length;i++){
+                    mySlides[i].setAttribute("src",arrSlides[i]);
+                }
+                let respoAnima = document.getElementsByClassName('respo-animation');
+                let arrRespo = ["img/desktop-large.png","img/mobile-large.png","img/tablet-large.png"];
+                for(let i=0;i<respoAnima.length;i++){
+                    respoAnima[i].setAttribute("src",arrRespo[i]);
+                }
             }
     
     let vh = window.innerHeight * 0.01;
@@ -26,6 +81,16 @@ document.addEventListener('DOMContentLoaded', function () {
     //the comma in var(--vh, 1vh) is a fallback
     //in case that the --vh is not defined, the default value is 1vh
     // *100 = 100%, *50 = 50%, etc.
+
+
+
+
+    
+
+
+
+    
+
 
 
         //pound must be 0 for no affect, otherwise need to try
