@@ -55,11 +55,3 @@
     0%{transform:scale(0);visibility: hidden;}
     100%{transform:scale(1);}
 }
-/* @keyframes slideDevices2{
-    0%{}
-    100%{left:43%;}
-} */
-@keyframes slideDevices2{
-    0%{transform:scale(0);visibility: hidden;}
-    100%{transform:scale(1);}
-}

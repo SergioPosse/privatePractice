@@ -260,7 +260,6 @@
     }
     .respo-animation{
       flex-grow:1;
-      visibility: hidden;
       position: absolute;
       transform:scale(0);
 

@@ -1,4 +1,21 @@
 document.addEventListener('DOMContentLoaded', function () {
+
+    let resow = window.innerWidth;
+    let resoh = window.innerHeight;
+            
+            if(resow<resoh){
+                // Get HTML head element 
+                var head = document.getElementsByTagName('HEAD')[0];  
+                // Create new link Element 
+                var link = document.createElement('link'); 
+                // set the attributes for link element  
+                link.rel = 'stylesheet';  
+                link.type = 'text/css'; 
+                link.href = 'style-mobile.css';  
+                // Append link element to HTML head 
+                head.appendChild(link);
+            }
+    
     let vh = window.innerHeight * 0.01;
     let vw = window.innerWidth * 0.01;
     document.documentElement.style.setProperty('--vh', `${vh}px`);
@@ -88,14 +105,21 @@ document.addEventListener('DOMContentLoaded', function () {
                 elemTrigger=elemento
             }
 
-            let reso = window.innerWidth;
-            let coeficient = 500;
-            if(reso>450){
-                coeficient = 300;
-            }
+            
         
             let limitTop = elemTrigger.getBoundingClientRect().top + window.scrollY; //less limit means that the add class happens more early cause the top limit is set to high
             let elementHeight = elemTrigger.getBoundingClientRect().height;
+
+            let coeficient = window.innerHeight*1;
+            let resow = window.innerWidth;
+            let resoh = window.innerHeight;
+            
+            if(resow>resoh){
+                coeficient = window.innerHeight*0.6;
+                console.log("coef: "+coeficient);
+                
+            }
+            console.log("coef: "+coeficient);
 
             // console.log(limitTop);
             // console.log("elH: "+elementHeight);
@@ -134,13 +158,8 @@ document.addEventListener('DOMContentLoaded', function () {
         //cargando animacion a muchos elementos de la misma clase
         let clases = document.getElementsByClassName('respo-animation');
 
-        let reso = window.innerWidth;
-            if(reso>450){
                 watchScroll(clases,'slideDevices',document.getElementById('device-animation'));
-            }
-            else{
-                watchScroll(clases,'slideDevices2',document.getElementById('device-animation'));
-            }
+                        
 
        
 
