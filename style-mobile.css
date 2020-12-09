@@ -94,6 +94,8 @@
     height: calc(var(--vh, 1vh) * 270);
     display:flex;
     position: relative;
+    width:100%;
+
 }
 .benefits-items{
     overflow: hidden;
@@ -103,6 +105,11 @@
     font-size:calc(var(--vw,1vw)*2.9);
     justify-content:space-around;
     align-content:space-around;
+}
+#vertical-bar{
+    height:0%;
+    left:10%;    
+    
 }
 .respo-animation{
     top:10%;

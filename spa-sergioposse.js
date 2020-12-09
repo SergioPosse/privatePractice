@@ -149,9 +149,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-
-
-
         //elemento = al elemento que se le agrega la clase en scroll
         //claseString = la clase que se agrega
         //alAux = se define solo si necesito que la clase se agrege a un elemento pero se active con otro al scrollear
@@ -181,10 +178,8 @@ document.addEventListener('DOMContentLoaded', function () {
             
             if(resow>resoh){
                 coeficient = window.innerHeight*0.6;
-                console.log("coef: "+coeficient);
                 
             }
-            console.log("coef: "+coeficient);
 
             // console.log(limitTop);
             // console.log("elH: "+elementHeight);
@@ -219,21 +214,52 @@ document.addEventListener('DOMContentLoaded', function () {
 
         watchScroll(document.getElementById('h2-device-animation'),'animation-fading',document.getElementById('device-animation'));
 
-
         //cargando animacion a muchos elementos de la misma clase
         let clases = document.getElementsByClassName('respo-animation');
-
-                watchScroll(clases,'slideDevices',document.getElementById('device-animation'));
+        watchScroll(clases,'slideDevices',document.getElementById('device-animation'));
                         
 
-       
-
+    
 
         //progress bar
         var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-        var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-        var scrolled = (winScroll / height) * 100;
+        var heightBar = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        var scrolled = (winScroll / heightBar) * 100;
         document.getElementById("bar").style.width = scrolled + "%";
+
+
+        //100% vertical-bar = height2
+        let el = document.getElementById("benefits-content");
+        let heightBenefitsContent = el.getBoundingClientRect().height;
+
+        var winScroll2 = window.pageYOffset-heightBenefitsContent;
+        console.log("2: "+winScroll2);
+        console.log("2: "+heightBenefitsContent);
+
+            let resow = window.innerWidth;
+            let resoh = window.innerHeight;
+            let wepa = 0
+            if(resow<resoh){
+                wepa = 400; 
+            }
+        let progress=0;
+        if(winScroll2>heightBenefitsContent+wepa){
+            //start progress bar
+            console.log("progress..");
+            console.log("height: "+heightBenefitsContent);
+            let scrollTop = parseInt(window.pageYOffset) - parseInt(heightBenefitsContent)*2-wepa;
+            progress = parseInt((scrollTop*100)/heightBenefitsContent);
+            console.log("scrollTop: "+scrollTop)
+            if(wepa==400){
+                console.log("wepa");
+                console.log("progress: "+progress);
+                document.getElementById("vertical-bar").style.height= -12+progress+"%";
+            }else{
+                document.getElementById("vertical-bar").style.height = progress+"%";
+            }
+
+        }
+
         
     }, false);
 

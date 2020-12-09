@@ -6,6 +6,10 @@
         color: rgb(220, 227, 235);
         width:calc(var(--vw,1vw)*100);
         overflow-X:hidden;
+        display:flex;
+        flex-direction: column;
+        align-content: center;
+        align-items: center;
     }
     input, textarea{
         background-color:#b3ddff;
@@ -31,7 +35,7 @@
         position:fixed !important;
         background-color:rgb(223, 240, 255);
         height:17vh;
-        width:100%;
+        width:calc(var(--vw,1vw)*100);
         display:inline-flex;
         align-items: center;
         justify-content: space-evenly;
@@ -73,7 +77,7 @@
     }
 /* ------PROGRESS BAR---------- */
     .progress-bar-container{
-        width:100%;
+        width:calc(var(--vw,1vw)*100);
         height:2%;
         background-color:white;
         position:fixed;
@@ -94,6 +98,7 @@
         display:flex;
         align-items:center;
         align-content:center;
+        text-align: center;
     }
     .rotate{
         box-shadow:0px 0px 0px 20px rgb(245, 245, 245);
@@ -102,15 +107,16 @@
         animation-play-state: paused;
         animation-delay: calc(var(--scroll) * -1s);
         width:5%;
-        height:auto;
+        object-fit: contain;
         margin-left:auto;
         margin-right:auto;
+
     }
 /* -----SECTIONS ---------*/
     #section-container{
      
         background-color: rgb(191, 206, 207);
-        width:100%;
+        width:calc(var(--vw,1vw)*100);
         display:flex;
         flex-direction:column;
         justify-content: space-evenly;
@@ -154,10 +160,10 @@
         background: rgb(184, 119, 228);
         display:flex;
         align-items:center;
+        position: relative;
     }
     #about img{
         width:40%;
-        height:40%;
         position:absolute;
         animation: fade 1s linear forwards;
         animation-play-state: paused;
@@ -235,11 +241,49 @@
         position:relative;
     }  
 
-    #benefits-content{
+     #benefits-content{
         height: calc(var(--vh, 1vh) * 270);
         display:flex;
         position: relative;
-        width:100%;
+        width:calc(var(--vw,1vw)*100);
+        background-color: palevioletred;
+    } 
+    #vertical-bar{
+        position:absolute;
+        left: 50%;
+        top: 10%;
+        height:0%;
+        width:2%;
+        background-color: black;
+        max-height: 85%;
+        display:block;
+      
+    } 
+   
+    /* #vertical-bar:after{
+        height:0%;
+        display:block;
+        margin:auto;
+        content:"";
+        width:60%;
+        background-color: white;
+        z-index: 199997;
+        animation: progress 1s linear infinite;
+        animation-play-state: paused;
+        animation-delay: calc(var(--scroll) * -100s);
+        
+    } */
+    #check-respo{
+
+    }
+    #check-money{
+
+    }
+    #check-wifi{
+
+    }
+    #check-emergency{
+
     }
 
     .benefits-items{
