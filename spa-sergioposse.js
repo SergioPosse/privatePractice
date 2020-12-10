@@ -126,7 +126,8 @@ document.addEventListener('DOMContentLoaded', function () {
    window.addEventListener('scroll',  () => {
         let heightContainer = document.getElementById('section-container').offsetHeight;
         let scrollVal = window.pageYOffset / (heightContainer - window.innerHeight);
-        // console.log(scrollVal);
+        // console.log("scrollval: "+scrollVal*100);
+        // document.body.style.setProperty('--scrollRotor',parseInt(((scrollVal*100)+10))+"%");
         document.body.style.setProperty('--scroll',scrollVal);
 
 
