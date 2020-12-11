@@ -1,3 +1,6 @@
+:root {
+    --vheight: 0%;
+  }
     body{
         margin:0;
         background-color:rgb(102, 204, 89);
@@ -251,37 +254,108 @@
         display:flex;
         position: relative;
         width:calc(var(--vw,1vw)*100);
+        flex-direction: column;
         background-color: palevioletred;
     } 
     #vertical-bar{
         position: absolute;
         left: 50%;                         /*  added  */
-        top: 10%;                          /*  added  */
+        top:15%;                         /*  added  */
         transform: translate(-50%,-10%);   /*  added  */
-        height:0%;
+        height:90%;
         width:2%;
-        background-color: black;
-        max-height: 85%;
-        display:inline-block;
-      
-    } 
-   
-    /* #vertical-bar:after{
+        background-color: rgb(52, 31, 109);
+        display:flex;
+        border: 3% solid rgb(52, 31, 109);
+        border-radius:21px;  
+        justify-content: center;
+        justify-items: center;
+    }
+    #vertical-bar-inside{
         height:0%;
-        display:block;
-        margin:auto;
-        content:"";
-        width:60%;
-        background-color: white;
-        z-index: 199997;
-        animation: progress 1s linear infinite;
-        animation-play-state: paused;
-        animation-delay: calc(var(--scroll) * -100s);
-        
-    } */
+        width:50%;
+        background-color: rgb(204, 190, 229);
+        z-index:1000001;
+        max-height: 97%;
+        top:2%;
+        display:flex;
+        margin-left:auto;
+        margin-right:auto;
+        border: 0;
+        border-radius: 21px;
+        position:relative;
+        display:none
+    }
+    .size-helper {
+        display: block;
+        width: 100%;
+        height: auto;
+        visibility: hidden;
+   }
     #check-respo{
+        background-color: rgb(52, 31, 109);
+        border-radius: 50%;
+        width:200%;
+        display:flex;
+        position: absolute;
+        z-index:1000000;
+        justify-self: center !important;
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        visibility: visible !important;
+        -webkit-box-sizing: border-box;
+        border: 1vw solid rgb(52, 31, 109);
+        background-color: rgb(52, 31, 109);
 
     }
+    .checked{
+        background-color: rgb(204, 190, 229) !important;
+
+    }
+    #emergency{
+        display:flex;
+        flex-direction:row;
+        justify-content: space-evenly;
+
+    }
+    #emergency-img{
+        display:flex;
+        align-items:center;
+        justify-content: center;
+        width:30%;
+    }
+    #emergency-desc{
+        display:flex;
+        flex-direction:column;
+        width:30%;
+        align-items: center;
+        color:rgb(12, 1, 73);
+    }
+    #emergency button{
+        cursor:pointer;
+        opacity:0.8;
+        height:auto;
+        display:flex;
+        padding:10%;
+        width:50%;
+        align-items:center;
+        justify-content:center;
+        color:rgb(12, 1, 73);
+        border-radius:43px;
+        background-color:green;
+        border:2px solid rgb(0, 228, 68);
+
+    }
+    #emergency img{
+        width:50%;
+        object-fit: contain;
+        padding:5%;
+    }
+    #emergency h2{
+        width:30%;
+        padding:5%;
+    }
+
     #check-money{
 
     }
@@ -296,7 +370,7 @@
         display:flex;
         color:black;
         flex-direction: row;
-        align-items:center;
+        justify-content: space-between;
         font-size:calc(var(--vw,1vw)*1.3);
         
     }
@@ -305,29 +379,33 @@
         height:25%;
     }
     .respo-container{
-        width:50%;
+        width:30%;
         height:100%;
-        margin:0;
         position: relative;
         display:flex;
+        justify-content: center;
+        justify-items: center;
+        align-items:center;
+        align-content:center;
     }
     .respo-animation{
       flex-grow:1;
       position: absolute;
       transform:scale(0);
+      
 
     }
     .des{/* pc */
         top:10%;
-        left:18%;
+        left:50%;
         width:50%;
         object-fit: contain;
         animation-delay:0ms !important;
 
     }
     .mob{/* celular */
-        left:16%;
-        bottom:10%;
+        left:90%;
+        top:35%;
         object-fit: contain;
         width:14%;
         z-index:999;
@@ -337,19 +415,17 @@
         animation-delay:700ms !important;
         left:41%;
         width:30%;
-        bottom:10%;
+        top:35%;
         object-fit: contain;
     }
     #h2-device-animation{
         animation-duration:3s !important;
-        visibility: hidden;    }
-    .h2-container{        
-        display:flex;
-        width:50%;
-        height:100%;
-        justify-content: center;
-        align-items: center;
+        visibility: hidden;
+        width:30%;
+        padding:5%;
+        color:rgb(12, 1, 73);
     }
+ 
     #line-benefits{
         width:0%;
         background-color:white;

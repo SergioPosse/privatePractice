@@ -53,5 +53,9 @@
 } */
 @keyframes slideDevices{
     0%{transform:scale(0);visibility: hidden;}
-    100%{transform:scale(1);}
+    100%{transform:scale(1);visibility: visible;}
 }
+/* @keyframes flip{
+    0%{}
+    100%{transform: rotateZ(360deg);}
+} */

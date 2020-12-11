@@ -173,7 +173,7 @@ document.addEventListener('DOMContentLoaded', function () {
             let limitTop = elemTrigger.getBoundingClientRect().top + window.scrollY; //less limit means that the add class happens more early cause the top limit is set to high
             let elementHeight = elemTrigger.getBoundingClientRect().height;
 
-            let coeficient = window.innerHeight*1;
+            let coeficient = window.innerHeight*0.6;
             let resow = window.innerWidth;
             let resoh = window.innerHeight;
             
@@ -199,6 +199,8 @@ document.addEventListener('DOMContentLoaded', function () {
                     removeMultiplesClases(claseString);
                 }else{
                     elemento.classList.remove(claseString);
+                    elemento.style.visibility="hidden";
+
                 }
             }
             
@@ -218,6 +220,10 @@ document.addEventListener('DOMContentLoaded', function () {
         //cargando animacion a muchos elementos de la misma clase
         let clases = document.getElementsByClassName('respo-animation');
         watchScroll(clases,'slideDevices',document.getElementById('device-animation'));
+
+        watchScroll(document.getElementById('emergency-img'),'slideDevices',document.getElementById('emergency'));
+        watchScroll(document.getElementById('emergency-desc'),'animation-fading',document.getElementById('emergency'));          
+        watchScroll(document.getElementById('check-respo'),'checked',document.getElementById('device-animation'));
                         
 
     
@@ -254,10 +260,17 @@ document.addEventListener('DOMContentLoaded', function () {
             if(wepa==400){
                 console.log("wepa");
                 console.log("progress: "+progress);
-                document.getElementById("vertical-bar").style.height= -12+progress+"%";
+                // document.getElementById("vertical-bar").style.height= -12+progress+"%";
             }else{
-                document.getElementById("vertical-bar").style.height = progress+"%";
+                // document.getElementById("vertical-bar").style.height = progress+"%";
             }
+            document.getElementById('vertical-bar-inside').style.height = progress+"%";
+
+            document.getElementById('vertical-bar-inside').style.display = "block";
+
+
+            // document.getElementById('vertical-bar').style.setProperty('border-radius','20%');
+
 
         }
 
