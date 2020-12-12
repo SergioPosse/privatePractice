@@ -240,26 +240,30 @@ document.addEventListener('DOMContentLoaded', function () {
         let heightBenefitsContent = el.getBoundingClientRect().height;
 
         var winScroll2 = window.pageYOffset-heightBenefitsContent;
-        console.log("2: "+winScroll2);
-        console.log("2: "+heightBenefitsContent);
+        console.log("win.pageyoff: "+window.pageYOffset);
+
+        console.log("win.innerheih: "+window.innerHeight);
 
             let resow = window.innerWidth;
             let resoh = window.innerHeight;
             let wepa = 0
             if(resow<resoh){
-                wepa = 400; 
+                wepa = 400;
+                if(resoh>700){
+                    wepa = 100;
+                } 
             }
         let progress=0;
         if(winScroll2>heightBenefitsContent+wepa){
             //start progress bar
-            console.log("progress..");
+            // console.log("progress..");
             console.log("height: "+heightBenefitsContent);
             let scrollTop = parseInt(window.pageYOffset) - parseInt(heightBenefitsContent)*2-wepa;
             progress = parseInt((scrollTop*100)/heightBenefitsContent);
-            console.log("scrollTop: "+scrollTop)
-            if(wepa==400){
-                console.log("wepa");
-                console.log("progress: "+progress);
+            // console.log("scrollTop: "+scrollTop)
+            if(wepa!=0){
+                // console.log("wepa");
+                // console.log("progress: "+progress);
                 // document.getElementById("vertical-bar").style.height= -12+progress+"%";
             }else{
                 // document.getElementById("vertical-bar").style.height = progress+"%";

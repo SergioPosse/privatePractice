@@ -330,6 +330,8 @@
         width:30%;
         align-items: center;
         color:rgb(12, 1, 73);
+        font-size:calc(var(--vw,1vw)*1.3);
+
     }
     #emergency button{
         cursor:pointer;
