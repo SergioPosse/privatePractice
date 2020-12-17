@@ -14,7 +14,7 @@ require 'vendor/autoload.php';
 
 $mail = new PHPMailer(); // create a new object
 $mail->IsSMTP(); // enable SMTP
-$mail->SMTPDebug = 1; // debugging: 1 = errors and messages, 2 = messages only
+$mail->SMTPDebug = 0; // debugging: 1 = errors and messages, 2 = messages only
 $mail->SMTPAuth = true; // authentication enabled
 // secure transfer enabled REQUIRED for Gmail
 $mail->Host = "ssl://smtp.gmail.com";
