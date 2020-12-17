@@ -304,7 +304,11 @@ document.addEventListener('DOMContentLoaded', function () {
         let mensaje = document.getElementById("mensaje").value;
         let xhr = new XMLHttpRequest();
         xhr.open('POST', "mail.php", true);
-        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.setRequestHeader('Accept', 'application/vnd.heroku+json; version=3');
+        var herokutoken = "bc2de290-0c25-4067-8b4f-ddf1d8d8f4a6";
+        var herokuKey = btoa(":" + herokutoken + "\n")
+        xhr.setRequestHeader("Authorization", herokuKey);
         xhr.onload = function(){
         let res = this.response;
           if (res.status) {
