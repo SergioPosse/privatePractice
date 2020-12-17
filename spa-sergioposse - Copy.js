@@ -2,15 +2,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     let resow = window.innerWidth;
     let resoh = window.innerHeight;
-    let hideMenu = true;
-
+            
             if(resow<resoh){
-
-
-                if (hideMenu){
-                    document.getElementById('menu-list').style.display = "none";
-                    document.getElementById('menu').style.display = "block";
-                }
                 // Get HTML head element 
                 var head = document.getElementsByTagName('HEAD')[0];  
                 // Create new link Element 
@@ -21,8 +14,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 link.href = 'style-mobile.css';  
                 // Append link element to HTML head 
                 head.appendChild(link);
-
-                //handle menu icon
 
                 //LOAD IMAGES DEPENDING DEVICE SIZE
                 let rotor = document.getElementById("rotate");
@@ -52,9 +43,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             }
             else{
-                hideMenu=true;
-                document.getElementById("menu").style.display="none";
-                document.getElementById("menu-list").style.display="none";
                 //LOAD IMAGES DEPENDING DEVICE SIZE
                 let rotor = document.getElementById("rotate");
                 rotor.setAttribute("src","img/hearth-circle.png");
@@ -226,12 +214,8 @@ document.addEventListener('DOMContentLoaded', function () {
         //uso del elemento auxiliar para disparar la animacion con el scroll
         watchScroll(document.getElementById('benefitsSpin'),'animation-spin',document.getElementById('benefits'));
         watchScroll(document.getElementById('line-benefits'),'animation-grow-right',document.getElementById('benefits'));
-        watchScroll(document.getElementById('device-desc'),'animation-fading',document.getElementById('device-animation'));
-        watchScroll(document.getElementById('money-desc'),'animation-fading',document.getElementById('money'));
-        watchScroll(document.getElementById('wifi-desc'),'animation-fading',document.getElementById('wifi'));
-        watchScroll(document.getElementById('money-img'),'slideDevices',document.getElementById('money'));
-        watchScroll(document.getElementById('wifi-img'),'slideDevices',document.getElementById('wifi'));
 
+        watchScroll(document.getElementById('h2-device-animation'),'animation-fading',document.getElementById('device-animation'));
 
         //cargando animacion a muchos elementos de la misma clase
         let clases = document.getElementsByClassName('respo-animation');
@@ -253,34 +237,45 @@ document.addEventListener('DOMContentLoaded', function () {
 
         //100% vertical-bar = height2
         let el = document.getElementById("benefits-content");
-        let benefitsHeight = el.getBoundingClientRect().height;
-        let benefitsOffTop = el.getBoundingClientRect().top;
-        let bodyTop = document.body.getBoundingClientRect().top;
-        let elOffset   = benefitsOffTop - bodyTop;
-        console.log("bodyTop: "+bodyTop);
-        console.log("elOffset: "+elOffset);
-        console.log("benefitsHeight: "+benefitsHeight);
-        console.log("benefitsOffTop: "+benefitsOffTop);
-        var winScroll2 = window.pageYOffset-benefitsHeight;
-        console.log("win.pageyoff: "+window.pageYOffset);
-        console.log("win.innerheih: "+window.innerHeight);
-        var barHeight = document.getElementById("vertical-bar").getBoundingClientRect().height;
-        var barOffsetTop = document.getElementById("vertical-bar").getBoundingClientRect().top - document.body.getBoundingClientRect().top;
-        let prueba = window.pageYOffset - (elOffset-(benefitsHeight/4));
-            console.log("prueba: "+prueba);
-        if((window.pageYOffset)>(elOffset-(benefitsHeight/2))){
-        //start progress bar
-        console.log("progress..");
+        let heightBenefitsContent = el.getBoundingClientRect().height;
 
-            let progress = parseInt((prueba*100)) / parseInt(barHeight);
-            
-            //TENGO QUe hacer que el pageYOffset o el scrollY sean 0 a el limite inferior
+        var winScroll2 = window.pageYOffset-heightBenefitsContent;
+        console.log("win.pageyoff: "+window.pageYOffset);
+
+        console.log("win.innerheih: "+window.innerHeight);
+
+            let resow = window.innerWidth;
+            let resoh = window.innerHeight;
+            let wepa = 0
+            if(resow<resoh){
+                wepa = 400;
+                if(resoh>700){
+                    wepa = 100;
+                } 
+            }
+        let progress=0;
+        if(winScroll2>heightBenefitsContent+wepa){
+            //start progress bar
+            // console.log("progress..");
+            console.log("height: "+heightBenefitsContent);
+            let scrollTop = parseInt(window.pageYOffset) - parseInt(heightBenefitsContent)*2-wepa;
+            progress = parseInt((scrollTop*100)/heightBenefitsContent);
+            // console.log("scrollTop: "+scrollTop)
+            if(wepa!=0){
+                // console.log("wepa");
+                // console.log("progress: "+progress);
+                // document.getElementById("vertical-bar").style.height= -12+progress+"%";
+            }else{
+                // document.getElementById("vertical-bar").style.height = progress+"%";
+            }
             document.getElementById('vertical-bar-inside').style.height = progress+"%";
-            document.getElementById('vertical-bar-inside').style.visibility = "visible";
-        }
-        if(window.pageYOffset>barOffsetTop+(barHeight*0.7)){
-        //finish bar position barOffsetTop+(barHeight*0.7) el 0.7 es para tomar un porcentaje para UX sino es el imite justo y no se llega a ver nada
-        console.log("finishh bar");
+
+            document.getElementById('vertical-bar-inside').style.display = "block";
+
+
+            // document.getElementById('vertical-bar').style.setProperty('border-radius','20%');
+
+
         }
 
         
@@ -311,130 +306,5 @@ document.addEventListener('DOMContentLoaded', function () {
     setSlider("nav-carrousel",2500);
 
     
-
-    //menu
-    
-
-    document.getElementById('menu').addEventListener("click", ()=>{   
-        console.log("cliii");
-        
-        if (hideMenu){
-            hideMenu=false;
-            document.getElementById('menu-list').style.display = "flex";
-            document.getElementById('menu').style.display = "none";
-        }
-        else{
-            hideMenu=true;
-            document.getElementById('menu-list').style.display = "none";
-            document.getElementById('menu').style.display = "flex";
-        }
-    });
-
-    document.body.addEventListener("click", (event)=>{   
-        handleMouseOutside(event);
-    });
-
-    const matchElementEvent = (element, event)=>{
-		let x = parseInt(event.clientX);
-		let y = parseInt(event.clientY);
-		console.log("mouse x: "+x," mouse y: "+y);
-
-		let top = parseInt(element.offsetTop);
-		let bot = parseInt(element.offsetTop+element.offsetHeight);
-		let left = parseInt(element.offsetLeft);
-		let right = parseInt(element.offsetLeft+element.offsetWidth);
-		console.log("bot: "+bot+" top: "+top);
-		console.log("left: "+left+" right: "+right);
-
-		if(y>bot || x>right || y<top || x<left){
-			console.log("hide element...");
-			// console.log(true);
-			// document.removeEventListener("mousedown", handleClickOutside);
-			return true;	
-		}
-		else{
-			// console.log("dont hide element...");
-			// document.removeEventListener("mousedown", handleClickOutside);
-			return false;
-		}
-	}
-
-	//with helps from the function "matchElementEvent"
-	//i setup here whats elements will be watching
-	const handleMouseOutside = async(event)=> {
-		if(hideMenu===false){
-			if(matchElementEvent(document.getElementById('menu-list'),event)){
-                 hideMenu=true;
-                 document.getElementById('menu-list').style.display="none";
-                 document.getElementById('menu').style.display="block";
-
-			}
-            else{
-                hideMenu=false
-                document.getElementById('menu-list').style.display="flex";
-                document.getElementById('menu').style.display="nonea";
-            };//is necesary?
-		}
-
-    }  
-
-
-    document.getElementById('clean').addEventListener("click", ()=>{   
-            document.getElementById("email").value="";
-            document.getElementById("mensaje").value="";
-    });
-
-    //SEND MAIL BASIC METHOD WITH POPUP MAIL CLIENT, NOT VERY NICE
-    // document.getElementById('sendemail').addEventListener("click", ()=>{   
-    //     let asunto = document.getElementById("asunto").value;
-    //     let mensaje = document.getElementById("mensaje").value;
-    //     window.open(`mailto:sergiodavidposse@gmail.com?subject=${asunto}&body=${mensaje}`, "_blank");
-  
-    // });
-
-
-    //ALTERNATIVE SENDMAIL WITH PHPMAILER AND ENV VARS IN HEROKU FOR PROTECT MY PASSWORD
-    document.getElementById('sendemail').addEventListener("click", ()=>{  
-        
-        //animation button sending
-        // var sendemail = document.getElementById("sendemail");
-        // sendemail.innerHTML = "Espera...";
-        var coverbutton = document.getElementById("coverbutton");
-        coverbutton.classList.add("widthGrow");
-
-        let email = document.getElementById("email").value;
-        let mensaje = document.getElementById("mensaje").value;
-        let xhr = new XMLHttpRequest();
-        xhr.open('POST', "mail.php", true);
-        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-        xhr.setRequestHeader('Accept', 'application/vnd.heroku+json; version=3');
-        var herokutoken = "bc2de290-0c25-4067-8b4f-ddf1d8d8f4a6";
-        var herokuKey = btoa(":" + herokutoken + "\n")
-        xhr.setRequestHeader("Authorization", herokuKey);
-
-        xhr.onload = function(res){
-        let resp = res.target.response;
-          if (res.status) {
-                    alert(resp);
-                    coverbutton.classList.remove("widthGrow");
-                    // sendemail.innerHTML= "ENVIAR";
-                    // coverbutton.textContent= "";
-
-
-          } else {
-                    alert(resp);
-                    coverbutton.classList.remove("widthGrow");
-                    // sendemail.textContent= "ENVIAR";
-                    // coverbutton.textContent= "";
-
-
-          }
-        };
-        xhr.send("email="+email+"&"+"mensaje="+mensaje);
-    });
-
-
-    
-    
-	
 });
+

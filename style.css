@@ -465,6 +465,25 @@
         width:50%;
         height:80%;
     }
+    #sendemail{
+        position:relative;
+        display:flex;
+        width:50%;
+        justify-content: center;
+        align-items: center;
+    }
+    #coverbutton{
+        position:absolute;
+        width:0%;
+        height:100%;
+        left:0;
+        top:0;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #de97f0;
+        opacity: 0.8;
+    }
 /*------------------- FOOTER--------------------*/
     #footer{
         background-color: darkslategray;
@@ -496,4 +515,6 @@
     .slideDevices{
         animation: slideDevices 1s ease-in-out forwards;
     }
-    
+    .widthGrow{
+        animation: widthGrow 1s linear;
+    }
