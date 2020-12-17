@@ -256,7 +256,7 @@
         width:calc(var(--vw,1vw)*100);
         flex-direction: column;
         background-color: rgb(233, 233, 233);
-        justify-content: space-evenly;
+        justify-content: space-around;
         justify-items: center;
         align-items: center;
         align-content: space-around;
@@ -288,7 +288,7 @@
         border: 0;
         border-radius: 21px;
         position:relative;
-        visibility: hidden;
+       visibility: hidden;
     }
     .size-helper {
         display: block;
@@ -328,14 +328,7 @@
         align-items:center;
         justify-content: center;
         width:50%;
-        width:40% !important;
-        margin-left:auto;
-        margin-right:auto;
-        align-self:center;
-        justify-self: center;
-
     }
-
     #emergency-desc,#wifi-desc, #money-desc,#device-desc{
         display:flex;
         flex-direction:column;
@@ -345,7 +338,6 @@
         justify-content: center;
         color:rgb(12, 1, 73);
         font-size:calc(var(--vw,1vw)*1.3);
-
 
     }
     #emergency .button-benefits{
@@ -357,11 +349,8 @@
         align-items: center;
         justify-content: center;
         color:rgb(12, 1, 73);
-        border-radius:33px;
-        color:wheat;
-        border:3px solid rgb(51, 78, 9);
+        border-radius:5% 5% 5% 5%;
         background-color:green;
-        box-shadow:1px 1px 1px rgb(0, 0, 0);
     }
     #emergency .button-benefits img{
         width:20%;
@@ -384,30 +373,33 @@
         flex-direction: row;
         justify-content: space-between;
         font-size:calc(var(--vw,1vw)*1.3); 
-
     }
     .respo-container{
         width:50%;
-        height:100%;
         position: relative;
         display:flex;
         justify-content: center;
         justify-items: center;
         align-items:center;
         align-content:center;
-
     }
     .respo-animation{
-        flex-grow:1;    
+        flex-grow:1;
+        left:25% !important;
+        top:10% !important;
         position: absolute;
         transform:scale(0);
     }
     .des{/* pc */
+        top:10%;
+        left:50%;
         width:50%;
         object-fit: contain;
         animation-delay:0ms !important;
     }
     .mob{/* celular */
+        left:90%;
+        top:35%;
         object-fit: contain;
         width:14%;
         z-index:999;
@@ -417,6 +409,7 @@
         animation-delay:700ms !important;
         left:41%;
         width:30%;
+        top:35%;
         object-fit: contain;
     }
     #line-benefits{

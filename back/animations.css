@@ -1,0 +1,61 @@
+@keyframes fade {
+    0%{opacity:0%;}
+    100%{opacity:100%;}
+}
+@keyframes rotor{
+    0%{}
+    100%{transform:rotateZ(360deg);}
+}
+@keyframes carro {
+    0%{background-image:url("img/work.jpg");}
+    25%{background-image:url("img/work2.jpg");}
+    50%{background-image:url("img/work3.jpg");}
+    75%{background-image:url("img/work4.jpg");}
+    100%{background-image:url("img/work5.jpg");}
+}
+@keyframes slideRight {
+    0%{transform: translateX(0%);}
+    100%{transform: translateX(100%);}
+}
+@keyframes rotor2 {
+    0%{}
+    50%{transform:translateX(20%)}
+    100%{
+        transform:translateX(-20%);}
+}
+@keyframes rotor3 {
+    0%{}
+    100%{
+        transform:rotateX(360deg);}
+}
+@keyframes coloring {
+	0% {background-position: 0% 50%;
+        color:white;}
+	50% {background-position: 100% 50%;
+        color:rgb(18, 39, 67);}
+	100% {background-position: 0% 50%;
+        color:white;}
+}
+@keyframes growRight{
+    0%{width:0%;
+    margin-right:20%;}
+    100%{width:20%;}
+}
+@keyframes quickShadow{
+    0%{}
+    100%{color:rgb(255, 255, 255);
+        text-shadow: 1px 1px 30px white,1px 1px 30px white,1px 1px 10px white;
+    }
+}
+/* @keyframes slideDevices{
+    0%{}
+    100%{transform:translateX(-1040%);}
+} */
+@keyframes slideDevices{
+    0%{transform:scale(0);visibility: hidden;}
+    100%{transform:scale(1);visibility: visible;}
+}
+/* @keyframes flip{
+    0%{}
+    100%{transform: rotateZ(360deg);}
+} */

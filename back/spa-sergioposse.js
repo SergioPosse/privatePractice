@@ -252,11 +252,12 @@ document.addEventListener('DOMContentLoaded', function () {
         var winScroll2 = window.pageYOffset-benefitsHeight;
         console.log("win.pageyoff: "+window.pageYOffset);
         console.log("win.innerheih: "+window.innerHeight);
+        let progress=0;
         var barHeight = document.getElementById("vertical-bar").getBoundingClientRect().height;
         var barOffsetTop = document.getElementById("vertical-bar").getBoundingClientRect().top - document.body.getBoundingClientRect().top;
         let prueba = window.pageYOffset - (elOffset-(benefitsHeight/4));
             console.log("prueba: "+prueba);
-        if((window.pageYOffset)>(elOffset-(benefitsHeight/2))){
+        if((window.pageYOffset)>(elOffset-(benefitsHeight/4))){
         //start progress bar
         console.log("progress..");
 
@@ -298,24 +299,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     setSlider("nav-carrousel",2500);
 
-    document.getElementById('sendemail').addEventListener("click", ()=>{   
-        let email = document.getElementById("email").value;
-        let asunto = document.getElementById("asunto").value;
-        let mensaje = document.getElementById("mensaje").value;
-        let xhr = new XMLHttpRequest();
-        xhr.open('POST', "mail.php", true);
-        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        xhr.onload = function(){
-        let res = this.response;
-          if (res.status) {
-                    alert(res);
-          } else {
-                    alert(res);
-          }
-        };
-
-        // SEND
-        xhr.send("email="+email+"&"+"asunto="+asunto+"&"+"mensaje="+mensaje);
-    });
-
+    
 });
+
