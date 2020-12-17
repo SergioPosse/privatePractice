@@ -309,12 +309,12 @@ document.addEventListener('DOMContentLoaded', function () {
         var herokutoken = "bc2de290-0c25-4067-8b4f-ddf1d8d8f4a6";
         var herokuKey = btoa(":" + herokutoken + "\n")
         xhr.setRequestHeader("Authorization", herokuKey);
-        xhr.onload = function(){
-        let res = this.response;
+        xhr.onload = function(res){
+        let resp = res.target.response;
           if (res.status) {
-                    alert(res);
+                    alert(resp);
           } else {
-                    alert(res);
+                    alert(resp);
           }
         };
 
