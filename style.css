@@ -54,6 +54,23 @@
     .menu{
         display:none;
     }
+    #menu-list{
+        position:fixed;
+        right:0;
+        top:0;
+        width:50%;
+        height:50%;
+        background-color:rgb(43, 42, 36);
+        z-index:199999;
+        display:flex;
+        color:rgb(199, 199, 199);
+        flex-direction:column;
+        justify-content: center;
+        align-items:center;
+    }
+    #menu-list h4:hover{
+        background-color:lightgreen;
+    }
     .long-menu{
         display:flex;
         height:100%;

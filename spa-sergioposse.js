@@ -2,8 +2,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
     let resow = window.innerWidth;
     let resoh = window.innerHeight;
-            
+    let hideMenu = true;
+
             if(resow<resoh){
+
+
+                if (hideMenu){
+                    document.getElementById('menu-list').style.display = "none";
+                    document.getElementById('menu').style.display = "block";
+                }
                 // Get HTML head element 
                 var head = document.getElementsByTagName('HEAD')[0];  
                 // Create new link Element 
@@ -14,6 +21,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 link.href = 'style-mobile.css';  
                 // Append link element to HTML head 
                 head.appendChild(link);
+
+                //handle menu icon
 
                 //LOAD IMAGES DEPENDING DEVICE SIZE
                 let rotor = document.getElementById("rotate");
@@ -43,6 +52,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             }
             else{
+                hideMenu=true;
+                document.getElementById("menu").style.display="none";
+                document.getElementById("menu-list").style.display="none";
                 //LOAD IMAGES DEPENDING DEVICE SIZE
                 let rotor = document.getElementById("rotate");
                 rotor.setAttribute("src","img/hearth-circle.png");
@@ -305,4 +317,72 @@ document.addEventListener('DOMContentLoaded', function () {
   
     });
 
+    //menu
+    
+
+    document.getElementById('menu').addEventListener("click", ()=>{   
+        console.log("cliii");
+        
+        if (hideMenu){
+            hideMenu=false;
+            document.getElementById('menu-list').style.display = "flex";
+            document.getElementById('menu').style.display = "none";
+        }
+        else{
+            hideMenu=true;
+            document.getElementById('menu-list').style.display = "none";
+            document.getElementById('menu').style.display = "flex";
+        }
+    });
+
+    document.body.addEventListener("click", (event)=>{   
+        handleMouseOutside(event);
+    });
+
+    const matchElementEvent = (element, event)=>{
+		let x = parseInt(event.clientX);
+		let y = parseInt(event.clientY);
+		console.log("mouse x: "+x," mouse y: "+y);
+
+		let top = parseInt(element.offsetTop);
+		let bot = parseInt(element.offsetTop+element.offsetHeight);
+		let left = parseInt(element.offsetLeft);
+		let right = parseInt(element.offsetLeft+element.offsetWidth);
+		console.log("bot: "+bot+" top: "+top);
+		console.log("left: "+left+" right: "+right);
+
+		if(y>bot || x>right || y<top || x<left){
+			console.log("hide element...");
+			// console.log(true);
+			// document.removeEventListener("mousedown", handleClickOutside);
+			return true;	
+		}
+		else{
+			// console.log("dont hide element...");
+			// document.removeEventListener("mousedown", handleClickOutside);
+			return false;
+		}
+	}
+
+	//with helps from the function "matchElementEvent"
+	//i setup here whats elements will be watching
+	const handleMouseOutside = async(event)=> {
+		if(hideMenu===false){
+			if(matchElementEvent(document.getElementById('menu-list'),event)){
+                 hideMenu=true;
+                 document.getElementById('menu-list').style.display="none";
+                 document.getElementById('menu').style.display="block";
+
+			}
+            else{
+                hideMenu=false
+                document.getElementById('menu-list').style.display="flex";
+                document.getElementById('menu').style.display="nonea";
+            };//is necesary?
+		}
+
+    }  
+    
+    
+	
 });

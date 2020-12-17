@@ -10,10 +10,31 @@
         <link rel="icon" type="image/svg+xml" href="favicon.svg">
     </head>
     <body>
+        <script>
+            function wpp(){
+                window.open("https://wa.me/5493584849720");
+            }
+            function scrollToMobile(elementName,pound){
+                let distance = parseInt(document.getElementById(elementName).offsetTop)-parseInt(pound);
+                scroll({
+                    behavior: "smooth",   //smotth BETTER solution for scroll but not supported by some browsers in 2020
+                    top: distance
+                })
+                document.getElementById("menu-list").style.display="none";
+                document.getElementById("menu").style.display="block";
+            }
+        </script>
+        <div id="menu-list">
+            <h4  onClick="scrollToMobile('init',100)" style="user-select:none;">NOSOTROS</h4>
+            <h4  onClick="scrollToMobile('specialities',150)" style="user-select:none;">ESPECIALIDADES</h4>
+            <h4  onClick="scrollToMobile('benefits',100)" style="user-select:none;">BENEFICIOS</h4>
+            <h4  onClick="scrollToMobile('contact',100)" style="user-select:none;">CONTACTO</h4>
+        </div>
 <!-- ==================================================HEADER NAV==============================================================-->
         <header id="nav">
+            
             <img class="logo" src="img/logo2.png" alt="logo-private-practice"/>
-            <img class="menu" src="img/menu.png" alt="menu-icon"/>
+            <img class="menu" id="menu" src="img/menu.png" alt="menu-icon"/>
             <h4 class="long-menu" id="nosotros" style="user-select:none;">NOSOTROS</h4>
             <h4 class="long-menu" id="especialidades" style="user-select:none;">ESPECIALIDADES</h4>
             <h4 class="long-menu" id="beneficios" style="user-select:none;">BENEFICIOS</h4>
@@ -144,7 +165,7 @@
                     <!-- <h2>Nos preocupa la salud del planeta tanto como la tuya.</h2> -->
                     <div id="emergency-desc">
                         <h2>Disponemos de un numero para consultas de emergencia las 24hs.</h2>
-                        <div class="button-benefits">
+                        <div onClick="wpp()" class="button-benefits">
                             <img src="img/unused/whatsapp-circle.png" style="float:left;margin-right:0.5em">
                             <span>Emergencia</span>
                         </div>
