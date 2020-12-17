@@ -1,20 +1,45 @@
 <?php
-$msg = $_POST["mensaje"];
-$email = $_POST["email"];
-$subject = $_POST["asunto"];
-$msg = wordwrap($msg,70);
-// Always set content-type when sending HTML email
-$headers = "MIME-Version: 1.0" . "\r\n";
-$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+// Import PHPMailer classes into the global namespace
+// These must be at the top of your script, not inside a function
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
 
-// More headers
-$headers="FROM: $email\r\n";
-ini_set("SMTP","ssl://smtp.gmail.com");
-ini_set("smtp_port","465");
-ini_set("username","<sergiodavidposse.gmail.com>"); # You need to change this
-ini_set("password","hecate27"); # You need to change this
+// Load Composer's autoloader
+require 'vendor/autoload.php';
 
-mail("sergiodavidposse@gmail.com",$subject,$msg,$headers);
-echo $msg;
+// Instantiation and passing `true` enables exceptions
+$mail = new PHPMailer(true);
 
+try {
+    //Server settings
+    $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      // Enable verbose debug output
+    $mail->isSMTP();                                            // Send using SMTP
+    $mail->Host       = 'smtp.gmail.com';                    // Set the SMTP server to send through
+    $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
+    $mail->Username   = 'sergiodavidposse@gmail.com';                     // SMTP username
+    $mail->Password   = 'hecate27';                               // SMTP password
+    $mail->SMTPSecure = 'tls';         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
+    $mail->Port       = 587;                                    // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
+
+    //Recipients
+    $mail->setFrom('from@example.com', 'Mailer');
+    $mail->addAddress('joe@example.net', 'Joe User');     // Add a recipient
+    $mail->addAddress('ellen@example.com');               // Name is optional
+    $mail->addReplyTo('info@example.com', 'Information');
+    $mail->addCC('cc@example.com');
+    $mail->addBCC('bcc@example.com');
+
+
+    // Content
+    $mail->isHTML(true);                                  // Set email format to HTML
+    $mail->Subject = 'Here is the subject';
+    $mail->Body    = 'This is the HTML message body <b>in bold!</b>';
+    $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+
+    $mail->send();
+    echo 'Message has been sent';
+} catch (Exception $e) {
+    echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+}
 ?>
