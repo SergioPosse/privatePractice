@@ -8,42 +8,30 @@ use PHPMailer\PHPMailer\Exception;
 $msg=$_POST["mensaje"];
 $msg = wordwrap($msg,70);
 $asunto=$_POST["asunto"];
-$mail=$_POST["email"];
+$email=$_POST["email"];
 // Load Composer's autoloader
 require 'vendor/autoload.php';
 
 // Instantiation and passing `true` enables exceptions
-$mail = new PHPMailer(true);
 
-try {
-    //Server settings
-    $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      // Enable verbose debug output
-    $mail->isSMTP();                                            // Send using SMTP
-    $mail->Host       = 'smtp.gmail.com';                    // Set the SMTP server to send through
-    $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
-    $mail->Username   = 'sergiodavidposse@gmail.com';                     // SMTP username
-    $mail->Password   = 'hecate27';                               // SMTP password
-    $mail->SMTPSecure = 'tls';         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
-    $mail->Port       = 587;                                    // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
+$mail = new PHPMailer(); // create a new object
+$mail->IsSMTP(); // enable SMTP
+$mail->SMTPDebug = 1; // debugging: 1 = errors and messages, 2 = messages only
+$mail->SMTPAuth = true; // authentication enabled
+$mail->SMTPSecure = 'tls'; // secure transfer enabled REQUIRED for Gmail
+$mail->Host = "smtp.gmail.com";
+$mail->Port = 465; // or 587
+$mail->IsHTML(true);
+$mail->Username = "sergiodavidposse@gmail.com";
+$mail->Password = "hecate27";
+$mail->SetFrom($email);
+$mail->Subject = $asunto;
+$mail->Body = $msg;
+$mail->AddAddress("sergiodavidposse@gmail.com");
 
-    //Recipients
-    $mail->setFrom($mail, 'Lo envio');
-    $mail->addAddress('sergiodavidposse@gmail.com', 'Sergio Posse');     // Add a recipient
-    // $mail->addAddress('ellen@example.com');               // Name is optional
-    // $mail->addReplyTo('info@example.com', 'Information');
-    // $mail->addCC('cc@example.com');
-    // $mail->addBCC('bcc@example.com');
-
-
-    // Content
-    $mail->isHTML(true);                                  // Set email format to HTML
-    $mail->Subject = $asunto;
-    $mail->Body    = $msg;
-    $mail->AltBody = $msg;
-
-    $mail->send();
-    echo 'Message has been sent';
-} catch (Exception $e) {
-    echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
-}
+ if(!$mail->Send()) {
+    echo "Mailer Error: " . $mail->ErrorInfo;
+ } else {
+    echo "Message has been sent";
+ }
 ?>
