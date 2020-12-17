@@ -22,7 +22,7 @@ $mail->Host = "ssl://smtp.gmail.com";
 $mail->Port = 465; // 465 or 587
 $mail->IsHTML(true);
 $mail->Username = "ornitorincogentil@gmail.com";
-$mail->Password = $my_env_var;
+$mail->Password = "hecate27";
 $mail->SetFrom('ornitorincogentil@gmail.com',$email);
 $mail->Subject = "Private-Practice";
 $mail->Body = $msg;
