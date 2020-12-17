@@ -91,25 +91,28 @@
 /* ---------------benefits ------------- */
 #benefits-content{
     background-color:#e6e6e6;
-    height: calc(var(--vh, 1vh) * 270);
+    height: auto;
     display:flex;
     position: relative;
     width:100%;
+    justify-content: space-around;
+    justify-items: center;
 }
 .benefits-items{
     overflow: hidden;
     display:flex;
     color:black;
     flex-direction: column;
-    justify-content:space-around;
-    align-content:space-around;
 }
 #emergency,#wifi, #money,#device-animation{
     flex-direction: column;
     font-size:calc(var(--vw,1vw)*3.9) !important;
-    justify-content:space-around;
-    align-content:space-around;
+    justify-content:center;
     width:100%;
+    margin-top:13%;
+    margin-bottom:13%;
+    padding:5%;
+
 }
 #emergency-img,#wifi-img, #money-img,.respo-container{
     width:100%;
@@ -124,8 +127,9 @@
     width:100%;
     font-size:calc(var(--vw,1vw)*3.5) !important;
     align-items: center;
-    align-content:space-around;
+    align-content:center;
     display:flex;
+    height:50%;
 }
 #emergency .button-benefits{
     cursor:pointer;
@@ -147,7 +151,6 @@
 #emergency h2,#wifi h2, #money h2,#device-animation h2{
     flex-grow:1;
     width:70%;
-    border:2px solid black;
     text-align: center;
 }
 #vertical-bar{
@@ -170,26 +173,17 @@
 }
 #device-animation{
     width:100%;
-    height:25%;
+    justify-content: space-around !important;
 }
-
 .respo-animation:nth-child(1){
     width:40%;
     animation-delay:0ms !important;
-    left:30%;
-    top:10%;
-
 }
 .respo-animation:nth-child(2){
     width:10%;
     animation-delay:1200ms !important;
-    left:30%;
-    top:44%;
-
 }
 .respo-animation:nth-child(3){
-    left:30%;
-    top:34%;
     width:30%;
     animation-delay:600ms !important;
 }
