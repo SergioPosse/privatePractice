@@ -2,13 +2,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
     let resow = window.innerWidth;
     let resoh = window.innerHeight;
-    let hideMenu = true;
 
             if(resow<resoh){
 
-
                 if (hideMenu){
-                    document.getElementById('menu-list').style.display = "none";
+                    document.getElementById('menu-list').style.visibility = "hidden";
                     document.getElementById('menu').style.display = "block";
                 }
                 // Get HTML head element 
@@ -54,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function () {
             else{
                 hideMenu=true;
                 document.getElementById("menu").style.display="none";
-                document.getElementById("menu-list").style.display="none";
+                document.getElementById("menu-list").style.visibility="hidden";
                 //LOAD IMAGES DEPENDING DEVICE SIZE
                 let rotor = document.getElementById("rotate");
                 rotor.setAttribute("src","img/hearth-circle.png");
@@ -240,7 +238,14 @@ document.addEventListener('DOMContentLoaded', function () {
         watchScroll(document.getElementById('emergency-img'),'slideDevices',document.getElementById('emergency'));
         watchScroll(document.getElementById('emergency-desc'),'animation-fading',document.getElementById('emergency'));          
         watchScroll(document.getElementById('check-respo'),'checked',document.getElementById('device-animation'));
-                        
+        watchScroll(document.getElementById('check-emergency'),'checked',document.getElementById('emergency'));
+        watchScroll(document.getElementById('check-money'),'checked',document.getElementById('money'));
+        watchScroll(document.getElementById('check-wifi'),'checked',document.getElementById('wifi'));
+
+        //check emergency
+        let checkEmergency = document.getElementById("check-emergency");
+        checkEmergency.style.setProperty("top","33%");
+                
 
     
 
@@ -257,20 +262,20 @@ document.addEventListener('DOMContentLoaded', function () {
         let benefitsOffTop = el.getBoundingClientRect().top;
         let bodyTop = document.body.getBoundingClientRect().top;
         let elOffset   = benefitsOffTop - bodyTop;
-        console.log("bodyTop: "+bodyTop);
-        console.log("elOffset: "+elOffset);
-        console.log("benefitsHeight: "+benefitsHeight);
-        console.log("benefitsOffTop: "+benefitsOffTop);
+        // console.log("bodyTop: "+bodyTop);
+        // console.log("elOffset: "+elOffset);
+        // console.log("benefitsHeight: "+benefitsHeight);
+        // console.log("benefitsOffTop: "+benefitsOffTop);
         var winScroll2 = window.pageYOffset-benefitsHeight;
-        console.log("win.pageyoff: "+window.pageYOffset);
-        console.log("win.innerheih: "+window.innerHeight);
+        // console.log("win.pageyoff: "+window.pageYOffset);
+        // console.log("win.innerheih: "+window.innerHeight);
         var barHeight = document.getElementById("vertical-bar").getBoundingClientRect().height;
         var barOffsetTop = document.getElementById("vertical-bar").getBoundingClientRect().top - document.body.getBoundingClientRect().top;
         let prueba = window.pageYOffset - (elOffset-(benefitsHeight/4));
-            console.log("prueba: "+prueba);
+            // console.log("prueba: "+prueba);
         if((window.pageYOffset)>(elOffset-(benefitsHeight/2))){
         //start progress bar
-        console.log("progress..");
+        // console.log("progress..");
 
             let progress = parseInt((prueba*100)) / parseInt(barHeight);
             
@@ -280,7 +285,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         if(window.pageYOffset>barOffsetTop+(barHeight*0.7)){
         //finish bar position barOffsetTop+(barHeight*0.7) el 0.7 es para tomar un porcentaje para UX sino es el imite justo y no se llega a ver nada
-        console.log("finishh bar");
+        // console.log("finishh bar");
         }
 
         
@@ -290,7 +295,7 @@ document.addEventListener('DOMContentLoaded', function () {
     //sliderClass is the class name without the dot
     const setSlider = (sliderClass,duration)=>{
         let slides = document.getElementsByClassName(sliderClass);
-        console.table(slides);
+        // console.table(slides);
         let x = 0;
         slides[slides.length-1].style.display = "block";
         const startSlider = ()=>{
@@ -316,18 +321,11 @@ document.addEventListener('DOMContentLoaded', function () {
     
 
     document.getElementById('menu').addEventListener("click", ()=>{   
-        console.log("cliii");
-        
-        if (hideMenu){
-            hideMenu=false;
-            document.getElementById('menu-list').style.display = "flex";
-            document.getElementById('menu').style.display = "none";
-        }
-        else{
-            hideMenu=true;
-            document.getElementById('menu-list').style.display = "none";
-            document.getElementById('menu').style.display = "flex";
-        }
+        console.log("cli");
+        // document.getElementById('menu-list').classList.add("menu-animation");
+        document.getElementById('menu-list').style.visibility="visible";
+        document.getElementById('menu').style.display = "none";
+        hideMenu = false;
     });
 
     document.body.addEventListener("click", (event)=>{   
@@ -337,17 +335,17 @@ document.addEventListener('DOMContentLoaded', function () {
     const matchElementEvent = (element, event)=>{
 		let x = parseInt(event.clientX);
 		let y = parseInt(event.clientY);
-		console.log("mouse x: "+x," mouse y: "+y);
+		// console.log("mouse x: "+x," mouse y: "+y);
 
 		let top = parseInt(element.offsetTop);
 		let bot = parseInt(element.offsetTop+element.offsetHeight);
 		let left = parseInt(element.offsetLeft);
 		let right = parseInt(element.offsetLeft+element.offsetWidth);
-		console.log("bot: "+bot+" top: "+top);
-		console.log("left: "+left+" right: "+right);
+		// console.log("bot: "+bot+" top: "+top);
+		// console.log("left: "+left+" right: "+right);
 
 		if(y>bot || x>right || y<top || x<left){
-			console.log("hide element...");
+			// console.log("hide element...");
 			// console.log(true);
 			// document.removeEventListener("mousedown", handleClickOutside);
 			return true;	
@@ -364,17 +362,15 @@ document.addEventListener('DOMContentLoaded', function () {
 	const handleMouseOutside = async(event)=> {
 		if(hideMenu===false){
 			if(matchElementEvent(document.getElementById('menu-list'),event)){
-                 hideMenu=true;
-                 document.getElementById('menu-list').style.display="none";
+                 document.getElementById('menu-list').style.visibility = "hidden";
                  document.getElementById('menu').style.display="block";
-
 			}
             else{
-                hideMenu=false
-                document.getElementById('menu-list').style.display="flex";
-                document.getElementById('menu').style.display="nonea";
+                // document.getElementById('menu-list').style.visibility="visible";
+                // document.getElementById('menu').style.display="none";
             };//is necesary?
-		}
+        }
+      
 
     }  
 
@@ -382,6 +378,12 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('clean').addEventListener("click", ()=>{   
             document.getElementById("email").value="";
             document.getElementById("mensaje").value="";
+    });
+
+    document.getElementById('close-menu').addEventListener("click", ()=>{   
+        hideMenu=true;
+        document.getElementById('menu-list').style.visibility = "hidden";
+        document.getElementById('menu').style.display="block";
     });
 
     //SEND MAIL BASIC METHOD WITH POPUP MAIL CLIENT, NOT VERY NICE

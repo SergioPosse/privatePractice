@@ -19,12 +19,19 @@
         border:none;
         border-radius:2%;
     }
+    input:focus,textarea:focus{
+        box-shadow: none;
+        border-bottom-color: rgba(29, 146, 74, 0.12) !important;
+    }
     button{
         border-radius: 10%;
         border:none;
         padding:4%;
         margin:5%;
+        user-select:none;
+        cursor: pointer;
     }
+    
     p{
         font-size:calc(var(--vh, 1vh) * 4);
         padding:3vw;
@@ -55,11 +62,12 @@
         display:none;
     }
     #menu-list{
-        position:fixed;
+        position: fixed;
         right:0;
         top:0;
         width:50%;
         height:50%;
+        visibility: hidden;
         background-color:rgb(43, 42, 36);
         z-index:199999;
         display:flex;
@@ -67,6 +75,13 @@
         flex-direction:column;
         justify-content: center;
         align-items:center;
+    }
+    #close-menu{
+        position: absolute;
+        top:2%;
+        right:10%;
+        user-select:none;
+        cursor: pointer;
     }
     #menu-list h4:hover{
         background-color:lightgreen;
@@ -328,6 +343,53 @@
         border: 1vw solid rgb(52, 31, 109);
         background-color: rgb(52, 31, 109);
     }
+    #check-emergency{
+        background-color: rgb(52, 31, 109);
+        border-radius: 50%;
+        width:200%;
+        display:flex;
+        position: absolute;
+        z-index:1000000;
+        justify-self: center;
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        visibility: visible !important;
+        -webkit-box-sizing: border-box;
+        border: 1vw solid rgb(52, 31, 109);
+        background-color: rgb(52, 31, 109);
+    }
+    #check-money{
+        background-color: rgb(52, 31, 109);
+        border-radius: 50%;
+        width:200%;
+        display:flex;
+        top:63%;
+        position: absolute;
+        z-index:1000000;
+        justify-self: center;
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        visibility: visible !important;
+        -webkit-box-sizing: border-box;
+        border: 1vw solid rgb(52, 31, 109);
+        background-color: rgb(52, 31, 109);
+    }
+    #check-wifi{
+        top:87%;
+        background-color: rgb(52, 31, 109);
+        border-radius: 50%;
+        width:200%;
+        display:flex;
+        position: absolute;
+        z-index:1000000;
+        justify-self: center;
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        visibility: visible !important;
+        -webkit-box-sizing: border-box;
+        border: 1vw solid rgb(52, 31, 109);
+        background-color: rgb(52, 31, 109);
+    }
     .checked{
         background-color: rgb(204, 190, 229) !important;
     }
@@ -517,4 +579,7 @@
     }
     .widthGrow{
         animation: widthGrow 1s linear;
+    }
+    .menu-animation{
+        animation: menuAnimation 1s linear forwards;
     }

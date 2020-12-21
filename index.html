@@ -11,6 +11,8 @@
     </head>
     <body>
         <script>
+            let hideMenu = true;
+
             function wpp(){
                 window.open("https://wa.me/5493584849720");
             }
@@ -20,11 +22,13 @@
                     behavior: "smooth",   //smotth BETTER solution for scroll but not supported by some browsers in 2020
                     top: distance
                 })
-                document.getElementById("menu-list").style.display="none";
+                hideMenu = true;
+                document.getElementById("menu-list").style.visibility="hidden";
                 document.getElementById("menu").style.display="block";
             }
         </script>
         <div id="menu-list">
+            <h2 id="close-menu">X</h2>
             <h4  onClick="scrollToMobile('init',100)" style="user-select:none;">NOSOTROS</h4>
             <h4  onClick="scrollToMobile('specialities',150)" style="user-select:none;">ESPECIALIDADES</h4>
             <h4  onClick="scrollToMobile('benefits',100)" style="user-select:none;">BENEFICIOS</h4>
@@ -141,9 +145,16 @@
                     <div id="check-respo">
                         <img class="size-helper" src="img/fff.jpg" width="50" height="50">
                     </div>
-                    <div id="check-money"></div>
-                    <div id="check-emergency"></div>
-                    <div id="check-wifi"></div>
+                    <div id="check-emergency">
+                        <img class="size-helper" src="img/fff.jpg" width="50" height="50">
+                    </div>
+                    <div id="check-money">
+                        <img class="size-helper" src="img/fff.jpg" width="50" height="50">
+                    </div>
+                    
+                    <div id="check-wifi">
+                        <img class="size-helper" src="img/fff.jpg" width="50" height="50">
+                    </div>
                 </div>
         
 
