@@ -312,8 +312,8 @@
         width:50%;
         background-color: rgb(204, 190, 229);
         z-index:1000001;
-        max-height: 97%;
-        top:2%;
+        max-height: 99%;
+        top:0.5%;
         display:flex;
         margin-left:auto;
         margin-right:auto;
@@ -328,7 +328,7 @@
         height: auto;
         visibility: hidden;
    }
-    #check-respo{
+    /* #check-respo{
         background-color: rgb(52, 31, 109);
         border-radius: 50%;
         width:200%;
@@ -389,7 +389,7 @@
         -webkit-box-sizing: border-box;
         border: 1vw solid rgb(52, 31, 109);
         background-color: rgb(52, 31, 109);
-    }
+    } */
     .checked{
         background-color: rgb(204, 190, 229) !important;
     }

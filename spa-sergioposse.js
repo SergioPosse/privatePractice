@@ -93,16 +93,6 @@ document.addEventListener('DOMContentLoaded', function () {
     // *100 = 100%, *50 = 50%, etc.
 
 
-
-
-    
-
-
-
-    
-
-
-
         //pound must be 0 for no affect, otherwise need to try
     const scrollToElement = (elementFrom,elementTo,pound)=>{
         elementFrom.addEventListener("click",()=>{
@@ -237,10 +227,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
         watchScroll(document.getElementById('emergency-img'),'slideDevices',document.getElementById('emergency'));
         watchScroll(document.getElementById('emergency-desc'),'animation-fading',document.getElementById('emergency'));          
-        watchScroll(document.getElementById('check-respo'),'checked',document.getElementById('device-animation'));
-        watchScroll(document.getElementById('check-emergency'),'checked',document.getElementById('emergency'));
-        watchScroll(document.getElementById('check-money'),'checked',document.getElementById('money'));
-        watchScroll(document.getElementById('check-wifi'),'checked',document.getElementById('wifi'));
+        // watchScroll(document.getElementById('check-respo'),'checked',document.getElementById('device-animation'));
+        // watchScroll(document.getElementById('check-emergency'),'checked',document.getElementById('emergency'));
+        // watchScroll(document.getElementById('check-money'),'checked',document.getElementById('money'));
+        // watchScroll(document.getElementById('check-wifi'),'checked',document.getElementById('wifi'));
 
         //check emergency
         let checkEmergency = document.getElementById("check-emergency");
@@ -255,37 +245,22 @@ document.addEventListener('DOMContentLoaded', function () {
         var scrolled = (winScroll / heightBar) * 100;
         document.getElementById("bar").style.width = scrolled + "%";
 
-
         //100% vertical-bar = height2
         let el = document.getElementById("benefits-content");
         let benefitsHeight = el.getBoundingClientRect().height;
         let benefitsOffTop = el.getBoundingClientRect().top;
         let bodyTop = document.body.getBoundingClientRect().top;
         let elOffset   = benefitsOffTop - bodyTop;
-        // console.log("bodyTop: "+bodyTop);
-        // console.log("elOffset: "+elOffset);
-        // console.log("benefitsHeight: "+benefitsHeight);
-        // console.log("benefitsOffTop: "+benefitsOffTop);
-        var winScroll2 = window.pageYOffset-benefitsHeight;
-        // console.log("win.pageyoff: "+window.pageYOffset);
-        // console.log("win.innerheih: "+window.innerHeight);
         var barHeight = document.getElementById("vertical-bar").getBoundingClientRect().height;
         var barOffsetTop = document.getElementById("vertical-bar").getBoundingClientRect().top - document.body.getBoundingClientRect().top;
         let prueba = window.pageYOffset - (elOffset-(benefitsHeight/4));
-            // console.log("prueba: "+prueba);
         if((window.pageYOffset)>(elOffset-(benefitsHeight/2))){
         //start progress bar
-        // console.log("progress..");
-
             let progress = parseInt((prueba*100)) / parseInt(barHeight);
-            
-            //TENGO QUe hacer que el pageYOffset o el scrollY sean 0 a el limite inferior
             document.getElementById('vertical-bar-inside').style.height = progress+"%";
             document.getElementById('vertical-bar-inside').style.visibility = "visible";
         }
-        if(window.pageYOffset>barOffsetTop+(barHeight*0.7)){
-        //finish bar position barOffsetTop+(barHeight*0.7) el 0.7 es para tomar un porcentaje para UX sino es el imite justo y no se llega a ver nada
-        // console.log("finishh bar");
+        if(window.pageYOffset>barOffsetTop+(barHeight*0.8)){
         }
 
         
